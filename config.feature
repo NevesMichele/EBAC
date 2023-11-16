@@ -1,43 +1,39 @@
 
-Funcionalidade: Tela de compra de produto
-Como cliente EBAC
-Quero configurar meu produto de acordo com meu tamanho e gosto e escolher a quantidade
-Para depois inserir no carrinho
+            Funcionalidade: Tela de configuração de produto
+            Como cliente EBAC-SHOP
+            Quero configurar meu produto de acordo com meu tamanho e gosto e escolher a quantidade
+            Para depois inserir no carrinho
 
-Contexto:
-Dado que eu acesse um produto para compra na loja online EBAC-SHOP
+            Contexto:
+            Dado que eu acesse a tela de configuração de produto
 
-Cenário: Configuração de cor e tamanho
-Quando eu selecionar a cor "Orange"
-E o tamanho "XP"
-Então deve exibir a mensagem de "Quantidade não selecionada"
+            Cenário: Configuração de produtos campos obrigatórios preechidos
+            Quando eu selecionar a cor "Orange",  tamanho "XP" e quantidade "2"
+            E clicar no botão comprar
+            Então deve inserir o produto no carrinho
 
-Cenário: Configuração de cor e quantidade
-Quando eu selecionar a cor "Red"
-E a quanidade "5"
-Então deve exibir a mensagem de "Tamanho não selecionado"
+            Cenário: Validação de botão limpar
+            Quando eu selecionar a cor "Red",  tamanho "XS" e quantidade "4"
+            E clicar no botão limpar
+            Então deve habilitar todas opções  de tamnaho e cor 
 
-Cenário: Configuração de tamanho e quantidade
-Quando eu selecionar o tamanho "M"
-E a quantidade "2"
-Então deve exibir a mensagem de "Cor não selecionada"
-
-
-Cenário: Configuração de cor, tamanho e quantidade
-Quando eu selecionar o tamanho "S"
-E a cor  "Blue"
-E a quantidade "1"
-Então deve adicionar o prudoto no carrinho de compras
+            Esquema do Cenário: Configuração com campos obrigatórios não preenchidos
+            Quando selecionar a <cor>, <tamanho> e <quantidade>
+            E clicar no botão comprar
+            Então deve aparecer a <mensagem> de alerta
 
 
-Cenário: Configuração de quantidade
-Quando eu selecionar a quantidade "10"
-Então deve exibir a mensagem de "Quantidade de produto selecionada não permitida para compra, por favor selecione até 10 produtos"
+            Exemplos:
+            | cor      | tamanho | quantidade | mensagem                                                                                           |
+            | "Orange" | "XS"    | ""         | "Dados obrigatórios não preenchidos"                                                               |
+            | "Red"    | ""      | "5"        | "Dados obrigatórios não preenchidos"                                                               |
+            | ""       | "M"     | "2"        | "Dados obrigatórios não preenchidos"                                                               |
+            | "Blue"   | "L"     | "20"       | "Quantidade de produto selecionada não permitida para compra, por favor selecione até 10 produtos" |
 
 
-Cenário: Válidação de botão 
-Quando eu selecionar o tamanho "S"
-E a cor  "Blue"
-E a quantidade "1"
-E o clicar no botão "limpar"
-Então deve habilitar todas opções de tamanho e cor
+
+
+
+
+
+
